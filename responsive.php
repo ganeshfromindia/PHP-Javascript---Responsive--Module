@@ -20,6 +20,13 @@ if(isset($colwidth)){
 		$returnString=rtrim($returnString, ",")	;
 		$returnString.='{
 						width: 100%;
+						}';
+		for ($i = 1; $i < $Columns + 1; $i = $i + 1) {
+				$returnString.=' .col-push-'.$i.',';
+			}
+		$returnString=rtrim($returnString, ",")	;
+		$returnString.='{
+						margin-left: 0%;
 						}
 			[class*="col"] {
 				float: left;
@@ -49,6 +56,12 @@ if(isset($colwidth)){
 										}';
 			}
 
+		for ($i = 1; $i < $Columns + 1 ; $i = $i + 1) {
+				$width = 100/$Columns*$i;
+				$returnString.=' .col-push-'.$i.' {
+										margin-left: '.$width.'% ;
+										}';
+			}
 			
 		$returnString.= '	
 			[class*="col"] {
